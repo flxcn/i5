@@ -34,8 +34,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto justify-content-end">
+                        @auth
+                            @include('partials._search')
 
+                            <li class="nav-item dropdown ms-3">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Resources
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <li><a class="dropdown-item" href="https://wiki.masmallclaims.org" target="_blank">SCAS Wiki</a></li>
+                                  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1iQ0R9BD68KVaa9efyE0KH5nz5BGIMNB5skvZLvMl3CI/pub?embedded=true" target="_blank">Office Guide</a></li>
+                                  <li><a class="dropdown-item" href="https://docs.google.com/document/d/12ER0ZAqxkdI_AVhl-ZZIRfChu2oBGbRkCvR5HgrkRHE/edit" target="_blank">Sign-Out Sheet</a></li>
+                                </ul>
+                              </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

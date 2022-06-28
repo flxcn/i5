@@ -25,7 +25,7 @@ class ClientController extends Controller
     public function index()
     {
         return view('clients.index', [
-            'clients' => Client::latest()->paginate(10)
+            'clients' => Client::latest()->paginate()
 
             // 'clients' => Client::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);

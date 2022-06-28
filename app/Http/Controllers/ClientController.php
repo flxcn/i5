@@ -99,4 +99,47 @@ class ClientController extends Controller
     {
         //
     }
+
+    // public function search()
+    // {
+    //     $clients = DB::table('clients')
+    //             ->where('first_name', 'like', '%{$search}%')
+    //             ->get();
+    // }
+
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $query = $request->input('q');
+        $search_mode = $request->input('mode');
+        if($search_mode == "name") 
+        {
+            $clients = Client::query()
+                ->whereRaw('concat(first_name," ",last_name, ", ",first_name) LIKE ?', "%{$query}%")
+                ->paginate();
+        }
+        else if($search_mode == "email")
+        {
+            $clients = Client::query()
+                ->where('email', 'LIKE', "%{$query}%")
+                ->paginate();
+        }
+        else if($search_mode == "phone")
+        {
+            $clients = Client::query()
+                ->where('phone_number', 'LIKE', "%{$query}%")
+                ->paginate();
+        }
+        else {
+            $clients = Client::query()
+                ->whereRaw('concat(first_name," ",last_name, ", ",first_name) LIKE ?', "%{$query}%")
+                ->orWhere('email', 'LIKE', "%{$query}%")
+                ->orWhere('phone_number', 'LIKE', "%{$query}%")
+                ->paginate();
+        };
+        
+    
+        // Return the search view with the results compacted
+        return view('clients.search', compact('clients'));
+    }
 }

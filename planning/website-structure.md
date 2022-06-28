@@ -24,3 +24,8 @@
 # index.php
 
 disclaimer on the bottom of everypage
+
+
+Changing the contact_type_id system to taggable_ids?
+
+https://laravel.com/docs/5.2/eloquent-relationships#polymorphic-relations

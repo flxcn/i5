@@ -59,10 +59,10 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function show($id)
-    public function show(Client $client)
+    public function show($id)
     {
         return view('clients.show', [
-            'client' => $client
+            'client' => Client::find($id)
         ]);
     }
 

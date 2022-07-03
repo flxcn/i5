@@ -38,7 +38,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -49,7 +49,25 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $formFields = $request->validate([
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'email' => ['required_without_all:phone_number','nullable', 'unique:clients','email'],
+            'phone_number' => ['required_without_all:email','nullable','unique:clients'],
+            'address_line_1' => 'nullable',
+            'address_line_2' => 'nullable',
+            'city' => 'nullable',
+            'state' => 'nullable',
+            'postal_code' => 'nullable',
+            'country' => 'nullable',
+        ]);
+
+        $formFields['originator_id'] = auth()->id();
+
+        $client = Client::create($formFields);
+
+        return redirect('/clients')->with('message', 'Client added successfully! ')->with('client_id', $client->id);
     }
 
     /**

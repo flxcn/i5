@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('phone_number')->unique();
-            $table->string('email')->unique();
+            $table->string('last_name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('phone_number')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('language')->default('English');
 
             // physical address info
-            $table->string('address_line_1');
-            $table->string('address_line_2');
-            $table->string('city');
-            $table->string('state');
-            $table->string('postal_code');
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
             $table->string('country')->default('USA');
 
             $table->timestamps();

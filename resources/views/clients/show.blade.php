@@ -1,50 +1,68 @@
-<x-layout>
-    <a href="/" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
-    <div class="mx-4">
-      <x-card class="p-10">
-        <div class="flex flex-col items-center justify-center text-center">
-          <img class="w-48 mr-6 mb-6"
-            src="{{$client->logo ? asset('storage/' . $client->logo) : asset('/images/no-image.png')}}" alt="" />
-  
-          <h3 class="text-2xl mb-2">
-            {{$listing->title}}
-          </h3>
-          <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
-  
-          <x-listing-tags :tagsCsv="$listing->tags" />
-  
-          <div class="text-lg my-4">
-            <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
-          </div>
-          <div class="border border-gray-200 w-full mb-6"></div>
-          <div>
-            <h3 class="text-3xl font-bold mb-4">Job Description</h3>
-            <div class="text-lg space-y-6">
-              {{$listing->description}}
-  
-              <a href="mailto:{{$listing->email}}"
-                class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"><i
-                  class="fa-solid fa-envelope"></i>
-                Contact Employer</a>
-  
-              <a href="{{$listing->website}}" target="_blank"
-                class="block bg-black text-white py-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-globe"></i>
-                Visit Website</a>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">  
+            <div class="card mb-3">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Client Info</h2>
+                    {{-- <p class="mb-4">Input client info</p> --}}
+                    <form method="POST" action="/clients" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="mb-3">
+                          <label for="client_id" class="form-label">Client ID</label>
+                          <input class="form-control" type="text" name="client_id" value="{{$client->id}}" aria-label="Client ID" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$client->first_name}}">
+
+                            @error('first_name')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$client->last_name}}">
+
+                            @error('last_name')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
+
+                            @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone number</label>
+                            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->phone_number}}">
+
+                            @error('phone_number')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+                  
+                        <div class="mb-1 mt-4">
+                            <button class="btn btn-success" type="submit">
+                            Edit client
+                            </button>
+                  
+                            <a href="/clients" class="btn btn-link"> Back </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-      </x-card>
-  
-      {{-- <x-card class="mt-4 p-2 flex space-x-6">
-        <a href="/listings/{{$listing->id}}/edit">
-          <i class="fa-solid fa-pencil"></i> Edit
-        </a>
-        <form method="POST" action="/listings/{{$listing->id}}">
-          @csrf
-          @method('DELETE')
-          <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
-        </form>
-      </x-card> --}}
     </div>
-  </x-layout>
+</div>    
+@endsection

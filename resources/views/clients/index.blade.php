@@ -4,6 +4,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+
+            @if(session()->has('message'))
+            <div class="card mb-3 bg-success">
+                <div class="card-body p-3">
+                <p class="card-text text-white">
+                    {{session('message')}}
+                    <a class="link-light" href="/clients/{{session('client_id')}}">Click here</a> to view.
+                </p>
+                </div>
+            </div>
+            @endif
+
             @unless(count($clients) == 0)
             
             <div class="card mb-3">

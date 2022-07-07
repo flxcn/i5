@@ -62,6 +62,47 @@
                     </form>
                 </div>
             </div>
+
+            @unless(count($contacts) == 0)
+            
+            <div class="card mb-3">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Client Info</h2>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Contact ID</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Phone #</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($contacts as $contact)
+                                    <tr>
+                                        <th scope="row">{{$contact->id}}</th>
+                                        <td>{{$contact->first_name}}</td>
+                                        <td>{{$contact->last_name}}</td>
+                                        <td>{{$contact->phone_number}}</td>
+                                        <td>{{$contact->email}}</td>
+                                        <td>{{$client->language}}</td>
+                                        <td>{{$contact->state}}</td>
+                                    </tr>
+                                @endforeach 
+                            </tbody>
+                        </table>
+                    </div>
+                {{$clients->links()}}
+                </div>
+            </div>
+            @else
+                <p>No contacts found</p>
+            @endunless
+            
         </div>
     </div>
 </div>    

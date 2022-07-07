@@ -29,6 +29,11 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->default('USA');
 
+            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('referral_source_id')->references('id')->on('referral_sources');
+
+            $table->foreignId('author_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

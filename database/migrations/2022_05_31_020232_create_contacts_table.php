@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id');
-            $table->foreignId('originator_id');
-            $table->foreignId('editor_id'); // I may scrap this in a future revision, or move to a new table
-            $table->foreignId('contact_type_id');
+            $table->foreignId('client_id')->references('id')->on('clients');
+            $table->foreignId('author_id')->references('id')->on('users');
+            $table->foreignId('contact_type_id')->references('id')->on('contact_types');
 
-            $table->date('contact_date');
-            $table->text('contact_summary');
+            $table->date('contact_date')->nullable(false);
+            $table->text('contact_summary')->nullable(false);
             
             $table->timestamps();
         });

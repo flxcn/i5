@@ -29,3 +29,6 @@ disclaimer on the bottom of everypage
 Changing the contact_type_id system to taggable_ids?
 
 https://laravel.com/docs/5.2/eloquent-relationships#polymorphic-relations
+
+
+https://dev-notes.eu/2016/11/nested-resource-routes-in-laravel/

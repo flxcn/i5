@@ -27,4 +27,9 @@ class Client extends Model
     {
         return 'clients_index';
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

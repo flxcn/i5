@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('contact_types', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

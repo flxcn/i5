@@ -92,7 +92,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('clients.edit', [
+            'client' => Client::find($id)
+        ]);
     }
 
     /**

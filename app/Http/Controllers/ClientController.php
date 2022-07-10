@@ -26,8 +26,6 @@ class ClientController extends Controller
     {
         return view('clients.index', [
             'clients' => Client::latest()->paginate()
-
-            // 'clients' => Client::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
 
@@ -80,7 +78,8 @@ class ClientController extends Controller
     public function show($id)
     {
         return view('clients.show', [
-            'client' => Client::find($id)
+            'client' => Client::find($id),
+            'contacts' => Client::find($id)->contacts
         ]);
     }
 

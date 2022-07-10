@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Contact;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,7 +20,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Client::factory(50)->create();
+        Client::factory(50)->has(Contact::factory()->count(3))->create();
+
+        // $this->call([
+        //     CaseTypeSeeder::class,
+        //     CategorySeeder::class,
+        //     ContactTypeSeeder::class,
+        //     ReferralSourceSeeder::class
+        // ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

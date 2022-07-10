@@ -32,3 +32,5 @@ https://laravel.com/docs/5.2/eloquent-relationships#polymorphic-relations
 
 
 https://dev-notes.eu/2016/11/nested-resource-routes-in-laravel/
+
+https://laraveldaily.com/nested-resource-controllers-and-routes-laravel-crud-example/

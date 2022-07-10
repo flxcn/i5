@@ -117,7 +117,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+        return redirect('/clients')->with('message', 'Client deleted successfully');
     }
 
     // public function search()

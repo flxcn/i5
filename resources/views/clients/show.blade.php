@@ -67,36 +67,35 @@
             
             <div class="card mb-3">
                 <div class="card-body p-4">
-                    <h2 class="card-title mb-4">Client Info</h2>
+                    <h2 class="card-title">Contacts</h2>
+                    <h6 class="card-subtitle text-muted mb-4">(<a href="/clients/{{$client->id}}/contacts">See all</a>)</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Contact ID</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Phone #</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Language</th>
-                                <th scope="col">State</th>
+                                    <th scope="col">Contact ID</th>
+                                    <th scope="col">Contact Type</th>
+                                    <th scope="col">Contact Date</th>
+                                    <th scope="col">Summary</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Updated At</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($contacts as $contact)
                                     <tr>
                                         <th scope="row">{{$contact->id}}</th>
-                                        <td>{{$contact->first_name}}</td>
-                                        <td>{{$contact->last_name}}</td>
-                                        <td>{{$contact->phone_number}}</td>
-                                        <td>{{$contact->email}}</td>
-                                        <td>{{$client->language}}</td>
-                                        <td>{{$contact->state}}</td>
+                                        <td>{{$contact->contact_type_id}}</td>
+                                        <td>{{$contact->contact_date}}</td>
+                                        <td>{{Str::limit($contact->contact_summary, 300) }}</td>
+                                        <td>{{$contact->created_at}}</td>
+                                        <td>{{$client->updated_at}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>
                         </table>
                     </div>
-                {{$clients->links()}}
+                {{-- {{$contacts->links()}} --}}
                 </div>
             </div>
             @else

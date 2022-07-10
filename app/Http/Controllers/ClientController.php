@@ -106,7 +106,28 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::find($id);
+        // Make sure logged in user is owner
+        if($client->author_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+        
+        $formFields = $request->validate([
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'email' => ['required_without_all:phone_number','nullable', 'unique:clients','email'],
+            'phone_number' => ['required_without_all:email','nullable','unique:clients'],
+            'address_line_1' => 'nullable',
+            'address_line_2' => 'nullable',
+            'city' => 'nullable',
+            'state' => 'nullable',
+            'postal_code' => 'nullable',
+            'country' => 'nullable',
+        ]);
+
+        $client->update($formFields);
+
+        return back()->with('message', 'Client updated successfully!');
     }
 
     /**

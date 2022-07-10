@@ -45,78 +45,83 @@ class CaseTypeSeeder extends Seeder
 
         $case_types =   [
             [
-                'id' => 1,
-                'description' => 'Create client record',
-                'is_active' => true
-            ],
-            [
-                'id' => 2,
-                'description' => 'Create new case record',
-                'is_active' => false
-            ],
-            [
-                'id' => 10,
-                'description' => 'Called, left message',
-                'is_active' => true
-            ],
-            [
-                'id' => 11,
-                'description' => 'Called, no answer',
-                'is_active' => true
-            ],
-            [
-                'id' => 12,
-                'description' => 'Called, helped by phone',
-                'is_active' => true
-            ],
-            [
-                'id' => 13,
-                'description' => 'Called, wrong number',
-                'is_active' => true
-            ],
-            [
-                'id' => 90,
-                'description' => 'Case referred to external agency',
+                'id' => 99,
+                'description' => 'Case complete',
                 'is_active' => false
             ],
             [
                 'id' => 20,
-                'description' => 'Call received, helped by phone',
+                'description' => 'Case pending',
+                'is_active' => false
+            ],
+            [
+                'id' => 51,
+                'description' => 'Case referred (external)',
                 'is_active' => true
+            ],
+            [
+                'id' => 52,
+                'description' => 'Case referred (legal research)',
+                'is_active' => true
+            ],
+            [
+                'id' => 1,
+                'description' => 'Urgent',
+                'is_active' => false
             ],
             [
                 'id' => 21,
-                'description' => 'Voicemail received',
+                'description' => 'Never been contacted',
                 'is_active' => true
             ],
             [
-                'id' => 91,
-                'description' => 'Case referred to GBLS Office',
-                'is_active' => false
-            ],
-            [
-                'id' => 92,
-                'description' => 'Case referred to Legal Research',
+                'id' => 9,
+                'description' => 'Legal research reply received',
                 'is_active' => true
             ],
             [
-                'id' => 99,
-                'description' => 'Case marked complete',
+                'id' => 90,
+                'description' => 'Cannot contact',
+                'is_active' => true
+            ],
+            [
+                'id' => 60,
+                'description' => 'Client assisted, likely to call again',
                 'is_active' => false
             ],
             [
-                'id' => 93,
-                'description' => 'Case referred to PBH Office',
+                'id' => 98,
+                'description' => 'Client assisted, not likely to call again',
                 'is_active' => false
+            ],
+            [
+                'id' => 11,
+                'description' => 'Phone tag',
+                'is_active' => true
+            ],
+            [
+                'id' => 22,
+                'description' => '1 message left',
+                'is_active' => true
+            ],
+            [
+                'id' => 23,
+                'description' => '2 messages left',
+                'is_active' => true
             ],
             [
                 'id' => 24,
-                'description' => 'Legal Research replied to question',
+                'description' => '3+ messages left',
+                'is_active' => true
+            ],
+            [
+                'id' => 15,
+                'description' => 'Needs to be contacted',
                 'is_active' => false
             ],
             [
-                'id' => 30,
-                'description' => 'Met with client',
+                'id' => 61,
+                'description' => 'Client assisted',
                 'is_active' => true
             ],
             [
@@ -125,38 +130,43 @@ class CaseTypeSeeder extends Seeder
                 'is_active' => true
             ],
             [
-                'id' => 31,
-                'description' => 'Appointment scheduled',
+                'id' => 10,
+                'description' => 'Upcoming appointment',
                 'is_active' => true
             ],
             [
-                'id' => 15,
-                'description' => 'Email Received',
+                'id' => 25,
+                'description' => 'Voicemail, helped',
                 'is_active' => true
             ],
             [
-                'id' => 16,
-                'description' => 'Email, Response Sent',
+                'id' => 12,
+                'description' => 'Email tag',
                 'is_active' => true
             ],
             [
-                'id' => 14,
-                'description' => 'Called, number not in service',
+                'id' => 0,
+                'description' => 'Undefined',
                 'is_active' => true
             ],
             [
-                'id' => 3,
-                'description' => 'Survey: Administered over phone',
+                'id' => 96,
+                'description' => 'Timed out',
                 'is_active' => true
             ],
             [
-                'id' => 4,
-                'description' => 'Survey: Sent email',
+                'id' => 100,
+                'description' => 'Urgent, foreign language',
                 'is_active' => true
             ],
             [
-                'id' => 5,
-                'description' => 'Survey: Emailed survey completed',
+                'id' => 101,
+                'description' => 'Urgent, time sensitive',
+                'is_active' => true
+            ],
+            [
+                'id' => 102,
+                'description' => 'Urgent, upcoming court date',
                 'is_active' => true
             ],
         ];

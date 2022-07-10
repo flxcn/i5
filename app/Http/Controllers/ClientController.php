@@ -122,13 +122,6 @@ class ClientController extends Controller
         return redirect('/clients')->with('message', 'Client deleted successfully');
     }
 
-    // public function search()
-    // {
-    //     $clients = DB::table('clients')
-    //             ->where('first_name', 'like', '%{$search}%')
-    //             ->get();
-    // }
-
     public function search(Request $request)
     {
         // Get the search value from the request

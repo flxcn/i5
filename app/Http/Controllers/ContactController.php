@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -21,8 +23,12 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($client_id)
     {
+        return view('contacts.index', [
+            'contacts' => Contact::where('client_id', $client_id)->paginate(),
+            'client' => Client::find($client_id)
+        ]);
     }
 
     /**
@@ -30,9 +36,11 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($client_id)
     {
-        //
+        return view('contacts.create', [
+            'client' => Client::find($client_id)
+        ]);
     }
 
     /**
@@ -41,9 +49,10 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($client_id, Request $request)
     {
-        //
+        Contact::create($request->all() + ['client_id' => $client_id]);
+        return redirect()->route('clients.contacts.index', $client_id);
     }
 
     /**
@@ -52,9 +61,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($client_id, Contact $contact)
     {
-        //
+        return view('clients.contacts.show', compact('client_id', 'contact'));
     }
 
     /**
@@ -63,9 +72,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($client_id, Contact $contact)
     {
-        //
+        return view('clients.contacts.edit', compact('client_id', 'contact'));
     }
 
     /**
@@ -75,9 +84,10 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($client_id, Request $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+        return redirect()->route('clients.contacts.index', $client_id);
     }
 
     /**
@@ -86,8 +96,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($client_id, Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->route('clients.contacts.index', $client_id);
     }
 }

@@ -21,6 +21,12 @@ If you need to reverse any changes:
 php artisan migrate:rollback --step=1
 ```
 
+## Running a Seeder
+
+```sh
+php artisan db:seed
+```
+
 ### Running The App  
 Upload the files to your document root, or if you are running your own server, use the following command  
 

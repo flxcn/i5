@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('referral_sources', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
             $table->timestamps();
         });
     }

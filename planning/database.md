@@ -247,3 +247,5 @@ $roles = User::find(1)->roles;
 If you would like to use an unconventional table name for your pivot table, you may pass it as the second argument to the belongsToMany method:
 
 return $this->belongsToMany('Role', 'user_roles');
+
+https://laraveldaily.com/nested-resource-controllers-and-routes-laravel-crud-example/

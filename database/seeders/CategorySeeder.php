@@ -22,7 +22,6 @@ class CategorySeeder extends Seeder
             [
                 'id' => 1,
                 'description' => 'None Selected',
-                'is_active' => True,
             ],
             [
                 'id' => 2,

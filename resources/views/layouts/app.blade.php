@@ -95,7 +95,8 @@
         </main>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-light" style="position: absolute; bottom: 10px; width: 100%;">
+    {{-- Sticking to the bottom when there is not enough text. But not getting pushed down when there is enough text. --}}
+    <footer class="footer mt-auto py-3 bg-light" style="position: relative; bottom: 10px; width: 100%;">
         <div class="container">
           <span class="text-muted">Disclaimer: For informational purposes only. The members of the Small Claims Advisory Service are undergraduate students at Harvard College, and are not lawyers. No aspect of this system is designed or intended to dispense legal advice; any actions you may choose to take or not to take in or out of court are at your own discretion.</span>
         </div>

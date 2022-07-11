@@ -11,45 +11,88 @@
                     <form method="POST" action="/clients" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="mb-3">
-                          <label for="client_id" class="form-label">Client ID</label>
-                          <input class="form-control" type="text" name="client_id" value="{{$client->id}}" aria-label="Client ID" readonly>
+                        <div class="row mb-3">
+                            <div class="col-2">
+                                <label for="client_id" class="form-label">Client ID</label>
+                                <input class="form-control" type="text" name="client_id" value="{{$client->id}}" aria-label="Client ID" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="first_name" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{$client->first_name}}">
+                                @error('first_name')
+                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label for="last_name" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{$client->last_name}}">
+    
+                                @error('last_name')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                            
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="first_name" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$client->first_name}}">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
+                                @error('email')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label for="phone_number" class="form-label">Phone number</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->phone_number}}">
 
-                            @error('first_name')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                            @enderror
+                                @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                           
+                            </div>
+                            <div class="col">
+                                <label for="phone_number" class="form-label">Language</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->language}}">
+
+                                @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                           
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="last_name" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$client->last_name}}">
+                        <hr class="my-3">
 
-                            @error('last_name')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label for="email" class="form-label">Address</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
+                                @error('email')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="col-3">
+                                <label for="phone_number" class="form-label">City</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->city}}">
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
+                                @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                           
+                            </div>
+                            <div class="col-2">
+                                <label for="phone_number" class="form-label">State</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->state}}">
 
-                            @error('email')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
+                                @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                           
+                            </div>
+                            <div class="col-2">
+                                <label for="phone_number" class="form-label">ZIP Code</label>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->postal_code}}">
 
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Phone number</label>
-                            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->phone_number}}">
-
-                            @error('phone_number')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                            @enderror
+                                @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror                           
+                            </div>
                         </div>
                   
                         <div class="mb-1 mt-4">
@@ -67,7 +110,7 @@
             
             <div class="card mb-3">
                 <div class="card-body p-4">
-                    <h2 class="card-title">Contacts</h2>
+                    <h2 class="card-title">Contact History</h2>
                     <h6 class="card-subtitle text-muted mb-4">(<a href="/clients/{{$client->id}}/contacts">See all</a>)</h6>
                     <div class="table-responsive">
                         <table class="table">

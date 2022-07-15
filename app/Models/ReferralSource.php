@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ReferralSource extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id', 'description',
+    ];
 }

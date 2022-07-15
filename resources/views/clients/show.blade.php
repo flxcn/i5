@@ -8,8 +8,9 @@
                 <div class="card-body p-4">
                     <h2 class="card-title mb-4">Client Info</h2>
                     {{-- <p class="mb-4">Input client info</p> --}}
-                    <form method="POST" action="/clients" enctype="multipart/form-data">
+                    <form method="POST" action="/clients/{{$client->id}}" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         <div class="row mb-3">
                             <div class="col-2">
@@ -36,7 +37,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
+                                <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}">
                                 @error('email')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror
@@ -50,10 +51,10 @@
                                 @enderror                           
                             </div>
                             <div class="col">
-                                <label for="phone_number" class="form-label">Language</label>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->language}}">
+                                <label for="language" class="form-label">Language</label>
+                                <input type="text" class="form-control" id="language" name="language" placeholder = "Language" value="{{$client->language}}">
 
-                                @error('phone_number')
+                                @error('language')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror                           
                             </div>
@@ -61,40 +62,51 @@
 
                         <hr class="my-3">
 
-                        <div class="row mb-3">
-                            <div class="col-5">
-                                <label for="email" class="form-label">Address</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}}">
-                                @error('email')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror
-                            </div>
-                            <div class="col-3">
-                                <label for="phone_number" class="form-label">City</label>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->city}}">
-
-                                @error('phone_number')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror                           
-                            </div>
-                            <div class="col-2">
-                                <label for="phone_number" class="form-label">State</label>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->state}}">
-
-                                @error('phone_number')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror                           
-                            </div>
-                            <div class="col-2">
-                                <label for="phone_number" class="form-label">ZIP Code</label>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->postal_code}}">
-
-                                @error('phone_number')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror                           
-                            </div>
+                        <div class="col-12 mb-3">
+                            <label for="address_line_1" class="form-label">Address 1</label>
+                            <input type="text" class="form-control" id="address_line_1" name="address_line_1" value="{{$client->address_line_1}}" placeholder="1234 Main St">
+                            @error('address_line_1')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
                         </div>
-                  
+
+                        <div class="col-12 mb-3">
+                            <label for="address_line_2" class="form-label">Address 2</label>
+                            <input type="text" class="form-control" id="address_line_2" name="address_line_2" value="{{$client->address_line_2}}" placeholder="Apartment, studio, or floor">
+                            @error('address_line_2')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder = "City" value="{{$client->city}}">
+                            @error('city')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror  
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="state" class="form-label">State</label>
+                            <select id="state" class="form-select">
+                              <option selected>{{$client->state}}</option>
+                              <option>...</option>
+                            </select>
+                            @error('state')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror 
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="postal_code" class="form-label">ZIP Code</label>
+                            <input type="tel" class="form-control" id="postal_code" name="postal_code" placeholder = "ZIP Code" value="{{$client->postal_code}}">
+                            @error('phone_number')
+                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror    
+                        </div>
+                        </div>
+
                         <div class="mb-1 mt-4">
                             <button class="btn btn-success" type="submit">
                             Edit client

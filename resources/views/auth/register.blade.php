@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="grad_year" class="col-md-4 col-form-label text-md-end">{{ __('Grad. Year') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="grad_year" type="number" class="form-control @error('grad_year') is-invalid @enderror" name="grad_year" value="{{ old('grad_year') }}" required>
+
+                                @error('grad_year')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

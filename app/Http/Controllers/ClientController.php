@@ -61,7 +61,7 @@ class ClientController extends Controller
             'country' => 'nullable',
         ]);
 
-        $formFields['originator_id'] = auth()->id();
+        $formFields['author_id'] = auth()->id();
 
         $client = Client::create($formFields);
 
@@ -106,16 +106,13 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::find($id);
-        // Make sure logged in user is owner
-        if($client->author_id != auth()->id()) {
-            abort(403, 'Unauthorized Action');
-        }
         
         $formFields = $request->validate([
             'first_name' => 'nullable',
             'last_name' => 'nullable',
-            'email' => ['required_without_all:phone_number','nullable', 'unique:clients','email'],
-            'phone_number' => ['required_without_all:email','nullable','unique:clients'],
+            'email' => ['required_without_all:phone_number','nullable','email'],
+            'phone_number' => ['required_without_all:email','nullable'],
+            'language' => 'required',
             'address_line_1' => 'nullable',
             'address_line_2' => 'nullable',
             'city' => 'nullable',

@@ -26,7 +26,7 @@
                             <h5 class="card-title mb-1">My Contributions</h5>
                             <ul class="list-group mt-0 list-group-flush text-left">
                                 <li class="list-group-item px-0">Clients entered: <b>{{$user->clients->count();}}</b> (<a href="/search?q={{$user->id}}&mode=author_id">See all</a>)</li>
-                                <li class="list-group-item px-0">Contacts recorded: <b>{{$user->contacts->count();}}</b> (<a href="/clients/author_id={{$user->id}}">See all</a>)</li>
+                                <li class="list-group-item px-0">Contacts recorded: <b>{{$user->contacts->count();}}</b> (<a href="/contacts?q={{$user->id}}&mode=author_id">See all</a>)</li>
                             </ul>
                         </div>
                     </div>

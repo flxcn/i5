@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contact_types', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unsigned();
             $table->string('description');
             $table->boolean('is_active');
             $table->timestamps();

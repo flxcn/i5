@@ -39,6 +39,5 @@ Route::resources([
     'clients.contacts' => ContactController::class
 ]);
 
-
 // All Contacts
-Route::get('/contacts', [ContactController::class, 'index'])->middleware('auth');
+Route::get('/contacts', [ContactController::class, 'search'])->middleware('auth');

@@ -39,8 +39,6 @@ class ContactTypeSeeder extends Seeder
      */
     public function run()
     {
-        ContactType::truncate();
-
         $contact_types =   [
             [
                 'id' => 1,

@@ -29,9 +29,9 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->default('USA');
 
-            $table->foreignId('case_type_id')->references('id')->on('case_types');
-            $table->foreignId('category_id')->references('id')->on('categories');
-            $table->foreignId('referral_source_id')->references('id')->on('referral_sources');
+            $table->foreignId('case_type_id')->references('id')->on('case_types')->default(21);
+            $table->foreignId('category_id')->references('id')->on('categories')->default(1);
+            $table->foreignId('referral_source_id')->references('id')->on('referral_sources')->default(1);
 
             $table->foreignId('author_id')->references('id')->on('users');
 

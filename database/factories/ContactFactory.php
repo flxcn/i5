@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\Client;
 use App\Models\User;
+use App\Models\ContactType;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
  */
@@ -19,18 +21,15 @@ class ContactFactory extends Factory
     public function definition()
     {
         $clients = Client::all()->pluck('id')->toArray();
-
         $users = User::all()->pluck('id')->toArray();
+        $contact_types = ContactType::all()->pluck('id')->toArray();
 
         return [
             'client_id' => $this->faker->randomElement($clients),
-            'originator_id' => $this->faker->randomElement($users),
-            'editor_id' => 1,	
-            'contact_type_id' => 99,	
+            'author_id' => $this->faker->randomElement($users),
+            'contact_type_id' => $this->faker->randomElement($contact_types),	
             'contact_date' => $this->faker->date(),
             'contact_summary' => $this->faker->text(1000),
-            // created_at	
-            // updated_at
         ];
     }
 }

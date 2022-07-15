@@ -62,6 +62,9 @@ class ClientController extends Controller
         ]);
 
         $formFields['author_id'] = auth()->id();
+        $formFields['case_type_id'] = 21;
+        $formFields['category_id'] = 1;
+        $formFields['referral_source_id'] = 1;
 
         $client = Client::create($formFields);
 
@@ -162,13 +165,19 @@ class ClientController extends Controller
                 ->where('phone_number', 'LIKE', "%{$query}%")
                 ->paginate();
         }
+        else if($search_mode == "author_id")
+        {
+            $clients = Client::query()
+                ->where('author_id', $query)
+                ->paginate();
+        }
         else {
             $clients = Client::query()
                 ->whereRaw('concat(first_name," ",last_name, ", ",first_name) LIKE ?', "%{$query}%")
                 ->orWhere('email', 'LIKE', "%{$query}%")
                 ->orWhere('phone_number', 'LIKE', "%{$query}%")
                 ->paginate();
-        };
+        }
         
     
         // Return the search view with the results compacted

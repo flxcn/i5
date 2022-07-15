@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Client::factory(50)->has(Contact::factory()->count(3))->create();
+        $this->call([
+            CaseTypeSeeder::class,
+            CategorySeeder::class,
+            ContactTypeSeeder::class,
+            ReferralSourceSeeder::class
+        ]);
 
-        // $this->call([
-        //     CaseTypeSeeder::class,
-        //     CategorySeeder::class,
-        //     ContactTypeSeeder::class,
-        //     ReferralSourceSeeder::class
-        // ]);
+        Client::factory(50)->has(Contact::factory()->count(3))->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

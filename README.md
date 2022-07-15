@@ -27,6 +27,8 @@ php artisan migrate:rollback --step=1
 php artisan db:seed
 ```
 
+Make sure MySQL database is InnoDB format. This will allow for foreign key constraints to be applied. Also remove the Client factory command statement.
+
 ### Running The App  
 Upload the files to your document root, or if you are running your own server, use the following command  
 

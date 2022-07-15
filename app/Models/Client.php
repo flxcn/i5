@@ -11,7 +11,11 @@ class Client extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'phone_number'];
+    protected $fillable = [
+        'first_name', 'last_name', 'email', 'phone_number',
+        'language', 'address_line_1', 'address_line_2', 'city',
+        'state', 'postal_code', 'country'
+    ];
 
     /**
      * Get the name of the index associated with the model.

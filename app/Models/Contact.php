@@ -12,4 +12,9 @@ class Contact extends Model
     protected $fillable = [
         'contact_type_id', 'contact_date', 'contact_summary'
     ];
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

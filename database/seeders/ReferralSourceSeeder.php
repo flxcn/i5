@@ -15,8 +15,6 @@ class ReferralSourceSeeder extends Seeder
      */
     public function run()
     {
-        ReferralSource::truncate();
-
         $referral_sources =   [
             [
                 'id' => 1,

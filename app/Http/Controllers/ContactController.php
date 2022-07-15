@@ -109,8 +109,8 @@ class ContactController extends Controller
         $search_mode = $request->input('mode');
         if($search_mode == "author_id") 
         {
-            $contacts = Client::query()
-                ->where('author_id', "%{$query}%")
+            $contacts = Contact::query()
+                ->where('author_id', $query)
                 ->paginate();
         }
     

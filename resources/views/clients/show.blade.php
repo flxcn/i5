@@ -112,7 +112,7 @@
                             Edit client
                             </button>
                   
-                            <a href="/clients" class="btn btn-link"> Back </a>
+                            <a href="{{url()->previous()}}" class="btn btn-link"> Back </a>
                         </div>
                     </form>
                 </div>

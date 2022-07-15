@@ -16,8 +16,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::truncate();
-
         $categories =   [
             [
                 'id' => 1,

@@ -101,4 +101,20 @@ class ContactController extends Controller
         $contact->delete();
         return redirect()->route('clients.contacts.index', $client_id);
     }
+
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $query = $request->input('q');
+        $search_mode = $request->input('mode');
+        if($search_mode == "author_id") 
+        {
+            $contacts = Client::query()
+                ->where('author_id', "%{$query}%")
+                ->paginate();
+        }
+    
+        // Return the search view with the results compacted
+        return view('contacts.search', compact('contacts'));
+    }
 }

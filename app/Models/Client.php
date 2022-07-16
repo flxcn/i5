@@ -37,4 +37,19 @@ class Client extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function referral_source()
+    {
+        return $this->belongsTo(ReferralSource::class);
+    }
+
+    public function case_type()
+    {
+        return $this->belongsTo(CaseType::class);
+    }
 }

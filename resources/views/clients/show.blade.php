@@ -107,6 +107,44 @@
                         </div>
                         </div>
 
+                        <hr class="my-3">
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select id="category" class="form-select">
+                                  <option selected>{{$client->category->description}}</option>
+                                  <option>...</option>
+                                </select>
+                                @error('category')
+                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror 
+                            </div>
+    
+                            <div class="col-md-4 mb-3">
+                                <label for="case_type" class="form-label">Case Type</label>
+                                <select id="state" class="form-select">
+                                  <option selected>{{$client->case_type->description}}</option>
+                                  <option>...</option>
+                                </select>
+                                @error('state')
+                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror 
+                            </div>
+    
+                            <div class="col-md-4 mb-3">
+                                <label for="referral_source" class="form-label">Referral Source</label>
+                                <select id="referral_source" class="form-select">
+                                  <option selected>{{$client->referral_source->description}}</option>
+                                  <option>...</option>
+                                </select>
+                                @error('referral_source')
+                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @enderror 
+                            </div>
+                        </div>
+
+
                         <div class="mb-1 mt-4">
                             <button class="btn btn-success" type="submit">
                             Edit client

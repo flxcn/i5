@@ -24,7 +24,7 @@
                     @foreach($contacts as $contact)
                         <tr>
                             <th scope="row"><a href="/clients/{{$contact->client->id}}">{{$contact->client->first_name}} {{$contact->client->last_name}}</a></th>
-                            <td>{{$contact->contact_type_id}}</td>
+                            <td>{{$contact->contact_type->description}}</td>
                             <td>{{$contact->contact_date}}</td>
                             <td>{{Str::limit($contact->contact_summary, 1000) }}</td>
                             <td>{{$contact->created_at}}</td>

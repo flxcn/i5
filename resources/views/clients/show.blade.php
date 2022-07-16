@@ -128,29 +128,24 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Contact ID</th>
-                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Contact Date</th>
+                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Summary</th>
-                                    <th scope="col">Created At</th>
                                     <th scope="col">Updated At</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($contacts as $contact)
                                     <tr>
-                                        <th scope="row">{{$contact->id}}</th>
-                                        <td>{{$contact->contact_type_id}}</td>
                                         <td>{{$contact->contact_date}}</td>
+                                        <td>{{$contact->contact_type->description}}</td>
                                         <td>{{Str::limit($contact->contact_summary, 300) }}</td>
-                                        <td>{{$contact->created_at}}</td>
                                         <td>{{$client->updated_at}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>
                         </table>
                     </div>
-                {{-- {{$contacts->links()}} --}}
                 </div>
             </div>
             @else

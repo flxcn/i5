@@ -24,9 +24,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Client ID</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Phone #</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Language</th>
@@ -36,9 +34,7 @@
                             <tbody>
                                 @foreach($clients as $client)
                                     <tr>
-                                        <th scope="row">{{$client->id}}</th>
-                                        <td>{{$client->first_name}}</td>
-                                        <td>{{$client->last_name}}</td>
+                                        <td><a href="/clients/{{$client->id}}">{{$client->first_name}} {{$client->last_name}}</a></td>
                                         <td>{{$client->phone_number}}</td>
                                         <td>{{$client->email}}</td>
                                         <td>{{$client->language}}</td>

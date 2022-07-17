@@ -111,34 +111,37 @@
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="category" class="form-label">Category</label>
-                                <select id="category" class="form-select">
-                                  <option selected>{{$client->category->description}}</option>
-                                  <option>...</option>
+                                <label for="category_id" class="form-label">Category</label>
+                                <select id="category_id" name="category_id" class="form-select">
+                                    @foreach ($categories as $category)
+                                    <option value={{$category->id}} @selected($client->category->description == $category->description)>{{$category->description}}</option>
+                                    @endforeach
                                 </select>
-                                @error('category')
+                                @error('category_id')
                                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
     
                             <div class="col-md-4 mb-3">
-                                <label for="case_type" class="form-label">Case Type</label>
-                                <select id="state" class="form-select">
-                                  <option selected>{{$client->case_type->description}}</option>
-                                  <option>...</option>
+                                <label for="case_type_id" class="form-label">Case Type</label>
+                                <select id="case_type_id" name="case_type_id" class="form-select">
+                                    @foreach ($case_types as $case_type)
+                                    <option value={{$case_type->id}}  @selected($client->case_type->description == $case_type->description)>{{$case_type->description}}</option>
+                                    @endforeach
                                 </select>
-                                @error('state')
+                                @error('case_type_id')
                                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
     
                             <div class="col-md-4 mb-3">
-                                <label for="referral_source" class="form-label">Referral Source</label>
-                                <select id="referral_source" class="form-select">
-                                  <option selected>{{$client->referral_source->description}}</option>
-                                  <option>...</option>
+                                <label for="referral_source_id" class="form-label">Referral Source</label>
+                                <select id="referral_source_id" name="referral_source_id" class="form-select">
+                                    @foreach ($referral_sources as $referral_source)
+                                    <option value={{$referral_source->id}} @selected($client->referral_source->description == $referral_source->description)>{{$referral_source->description}}</option>
+                                    @endforeach
                                 </select>
-                                @error('referral_source')
+                                @error('referral_source_id')
                                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror 
                             </div>

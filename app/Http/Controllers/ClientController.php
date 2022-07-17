@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\CaseType;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ReferralSource;
 
 class ClientController extends Controller
 {
@@ -82,7 +85,10 @@ class ClientController extends Controller
     {
         return view('clients.show', [
             'client' => Client::find($id),
-            'contacts' => Client::find($id)->contacts
+            'contacts' => Client::find($id)->contacts,
+            'categories' => Category::all(),
+            'case_types' => CaseType::where('is_active',true)->get(),
+            'referral_sources' => ReferralSource::all()
         ]);
     }
 
@@ -122,6 +128,10 @@ class ClientController extends Controller
             'state' => 'nullable',
             'postal_code' => 'nullable',
             'country' => 'nullable',
+
+            'category_id' => 'required',
+            'case_type_id' => 'required',
+            'referral_source_id' => 'required'
         ]);
 
         $client->update($formFields);

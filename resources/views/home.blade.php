@@ -52,7 +52,7 @@
                             <tbody>
                                 @foreach($user->clients->take(5) as $client)
                                     <tr>
-                                        <td>{{$client->first_name}} {{$client->last_name}}</td>
+                                        <td><a href="{{route('clients.show',$client->id)}}">{{$client->first_name}} {{$client->last_name}}</a></td>
                                         <td>{{$client->phone_number}}</td>
                                         <td>{{$client->email}}</td>
                                     </tr>
@@ -75,8 +75,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Contact Date</th>
+                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Summary</th>
                                     <th scope="col">Updated At</th>
                                 </tr>
@@ -84,10 +84,10 @@
                             <tbody>
                                 @foreach($user->contacts->take(5) as $contact)
                                     <tr>
-                                        <td>{{$contact->contact_type_id}}</td>
-                                        <td>{{$contact->contact_date}}</td>
-                                        <td>{{Str::limit($contact->contact_summary, 200) }}</td>
-                                        <td>{{$client->updated_at}}</td>
+                                        <td>{{$contact->contact_date->format('F j, Y')}}</td>
+                                        <td>{{$contact->contact_type->description}}</td>
+                                        <td>{{Str::limit($contact->contact_summary, 200) }} <a href="{{route('clients.contacts.show',['client'=>$client->id,'contact'=>$contact->id])}}"> (View) </a></td>
+                                        <td>{{$contact->updated_at->format('F j, Y, g:i a')}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
 use App\Models\Client;
+use App\Models\Contact;
+use App\Models\ContactType;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -63,7 +64,10 @@ class ContactController extends Controller
      */
     public function show($client_id, Contact $contact)
     {
-        return view('clients.contacts.show', compact('client_id', 'contact'));
+        return view('contacts.show', [
+            'contact' => Contact::find($contact->id),
+            'contact_types' => ContactType::all()
+        ]);
     }
 
     /**
@@ -74,7 +78,7 @@ class ContactController extends Controller
      */
     public function edit($client_id, Contact $contact)
     {
-        return view('clients.contacts.edit', compact('client_id', 'contact'));
+        return view('contacts.edit', compact('client_id', 'contact'));
     }
 
     /**
@@ -99,7 +103,7 @@ class ContactController extends Controller
     public function destroy($client_id, Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('clients.contacts.index', $client_id);
+        return redirect()->route('contacts.index', $contact->id);
     }
 
     public function search(Request $request)

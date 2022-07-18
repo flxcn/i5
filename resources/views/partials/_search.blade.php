@@ -16,7 +16,7 @@
                 <li><hr class="dropdown-divider"></li>
 
                 <li><a class="dropdown-item" href="/clients">Most Recent</a></li>
-                <li><a class="dropdown-item" href="#">Most Urgent</a></li>
+                <li><button class="dropdown-item" type="submit" name="mode" value="urgent">Most Urgent</button></li>
             </ul>
         </div>
     </form>

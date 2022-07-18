@@ -40,7 +40,8 @@ class ContactController extends Controller
     public function create($client_id)
     {
         return view('contacts.create', [
-            'client' => Client::find($client_id)
+            'client' => Client::find($client_id),
+            'contact_types' => ContactType::where('is_active',true)->get(),
         ]);
     }
 
@@ -52,8 +53,18 @@ class ContactController extends Controller
      */
     public function store($client_id, Request $request)
     {
-        Contact::create($request->all() + ['client_id' => $client_id]);
-        return redirect()->route('clients.contacts.index', $client_id);
+        $formFields = $request->validate([
+            'contact_date' => 'required',
+            'contact_type_id' => 'required',
+            'contact_summary' => 'required'
+        ]);
+
+        $formFields['author_id'] = auth()->id();
+        $formFields['client_id'] = $client_id;
+
+        $contact = Contact::create($formFields);
+
+        return redirect()->route('clients.show', $client_id)->with('message', 'Contact added successfully! ')->with('contact_id', $contact->id);
     }
 
     /**
@@ -66,7 +77,7 @@ class ContactController extends Controller
     {
         return view('contacts.show', [
             'contact' => Contact::find($contact->id),
-            'contact_types' => ContactType::all()
+            'contact_types' => ContactType::where('is_active',true)->get(),
         ]);
     }
 
@@ -100,7 +111,7 @@ class ContactController extends Controller
 
         $contact->update($formFields);
 
-        return back()->with('message', 'Contact updated successfully!');
+        return redirect()->route('clients.show', $client_id)->with('message', 'Contact updated successfully!');
 
         // $contact->update($request->all());
         // return redirect()->route('contacts.index', $client_id);

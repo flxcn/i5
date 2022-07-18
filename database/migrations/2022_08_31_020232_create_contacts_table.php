@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->references('id')->on('clients');
+            $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreignId('author_id')->references('id')->on('users');
             $table->foreignId('contact_type_id')->references('id')->on('contact_types');
 

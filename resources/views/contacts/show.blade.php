@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-{{-- @section('title', ' - ' . $client->first_name . ' ' . $client->last_name) --}}
+@section('title', config('app.name', 'i5') . ' | View Contact')
+
+@section('title', ' - ' .)
 
 @section('content')
 <div class="container">
@@ -31,19 +33,19 @@
                                 <label for="contact_date" class="form-label">Contact Date</label>
                                 <input type="date" class="form-control" id="contact_date" name="contact_date" value="{{$contact->contact_date->format('Y-m-d')}}" style="height:2.4rem">
                                 @error('contact_date')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror
                             </div>
 
                             <div class="col-md-5 mb-3">
-                                <label for="contact_type_id" class="form-label">Referral Source</label>
+                                <label for="contact_type_id" class="form-label">Contact Type</label>
                                 <select id="contact_type_id" name="contact_type_id" class="form-select" style="height:2.4rem">
                                     @foreach ($contact_types as $contact_type)
                                     <option value={{$contact_type->id}} @selected($contact->contact_type->description == $contact_type->description)>{{$contact_type->description}}</option>
                                     @endforeach
                                 </select>
                                 @error('contact_type_id')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
 

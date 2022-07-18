@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'i5') . ' | Home')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,12 +11,11 @@
                 <div class="row">
                     <div class="col-5 m-1">
                         <div class="card-body">
-                            <h5 class="card-title mb-1">My Profile</h5>
+                            <h5 class="card-title mb-1"><b>{{$user->name}}</b></h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{$user->email}}</h6>
                             <p class="card-text">
-                                Class of {{$user->grad_year}}<br>
-                                Volunteer since {{$user->created_at->format('Y')}}<br>
-                                User ID: {{$user->id}}
+                                <b>Class of {{$user->grad_year}}</b><br>
+                                <i>i5 user since {{$user->created_at->format('Y')}}</i>
                             </p>
                             <a href="#" class="card-link">Edit profile</a>
                             <a href="#" class="card-link">Change password</a>
@@ -75,10 +76,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Contact Date</th>
-                                    <th scope="col">Contact Type</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col">Summary</th>
-                                    <th scope="col">Updated At</th>
+                                    <th scope="col">Updated</th>
                                 </tr>
                             </thead>
                             <tbody>

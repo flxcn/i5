@@ -1,14 +1,23 @@
-# i5
-![i5 logo](/public/images/logo.png "i5")
+<p align="center">
+  <a href="https://github.com/flxcn/i5">
+    <img src="public/images/logo.png" alt="i5 logo" width="100" height="100">
+  </a>
+</p>
 
+# i5
 A comprehensive redesign of the [i4 database](https://github.com/scasBot/i4) for the Small Claims Advisory Service.
 
-## Usage
+## Installation
 
 ### Updating definitions  
 Located in `lang/en/messages.php` is a list of defined terms that may change from year to year (e.g. webmaster's name, email, etc.)—all you need to do is to edit their definitions in this file and they will update across the app.
 
-### Migrations  
+### Setting up the Database
+
+#### System Requirements
+Make sure MySQL database is InnoDB format. This will allow for foreign key constraints to be applied. Also remove the Client factory command statement.
+
+#### Migrations  
 To create all the necessary database structures, run this command:
 
 ```sh
@@ -21,13 +30,11 @@ If you need to reverse any changes:
 php artisan migrate:rollback --step=1
 ```
 
-## Running a Seeder
+#### Running a Seeder
 
 ```sh
 php artisan db:seed
 ```
-
-Make sure MySQL database is InnoDB format. This will allow for foreign key constraints to be applied. Also remove the Client factory command statement.
 
 ### Running The App  
 Upload the files to your document root, or if you are running your own server, use the following command  

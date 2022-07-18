@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'i5') . ' | Contacts ')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -48,7 +50,7 @@
                 </div>
             </div>
             @else
-                <p>No contacts found</p>
+                <p>No contacts found. <a href="{{route('clients.show',$client->id)}}">Return to client</a></p> 
             @endunless
         </div>
     </div>

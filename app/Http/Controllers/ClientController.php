@@ -149,7 +149,7 @@ class ClientController extends Controller
     {
         $client = Client::find($id);
         $client->delete();
-        return redirect('/clients')->with('message', 'Client deleted successfully');
+        return redirect('/clients')->with('message', 'Client deleted successfull.')->with('delete',true);
     }
 
     public function search(Request $request)

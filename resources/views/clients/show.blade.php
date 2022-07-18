@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ' - ' . $client->first_name . ' ' . $client->last_name)
+@section('title', config('app.name', 'i5') . ' | ' . $client->first_name . ' ' . $client->last_name)
 
 @section('content')
 <div class="container">
@@ -35,7 +35,7 @@
                                 <label for="first_name" class="form-label">First name</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{$client->first_name}}">
                                 @error('first_name')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="col">
@@ -43,7 +43,7 @@
                                 <input type="text" class="form-control" id="last_name" name="last_name" value="{{$client->last_name}}">
     
                                 @error('last_name')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror                            
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}">
                                 @error('email')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="col">
@@ -61,7 +61,7 @@
                                 <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{$client->phone_number}}">
 
                                 @error('phone_number')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror                           
                             </div>
                             <div class="col">
@@ -69,7 +69,7 @@
                                 <input type="text" class="form-control" id="language" name="language" placeholder = "Language" value="{{$client->language}}">
 
                                 @error('language')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror                           
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <label for="address_line_1" class="form-label">Address 1</label>
                             <input type="text" class="form-control" id="address_line_1" name="address_line_1" value="{{$client->address_line_1}}" placeholder="1234 Main St">
                             @error('address_line_1')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
 
@@ -88,7 +88,7 @@
                             <label for="address_line_2" class="form-label">Address 2</label>
                             <input type="text" class="form-control" id="address_line_2" name="address_line_2" value="{{$client->address_line_2}}" placeholder="Apartment, studio, or floor">
                             @error('address_line_2')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
 
@@ -97,7 +97,7 @@
                             <label for="city" class="form-label">City</label>
                             <input type="text" class="form-control" id="city" name="city" placeholder = "City" value="{{$client->city}}">
                             @error('city')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror  
                         </div>
 
@@ -158,7 +158,7 @@
                                 <option value="WY">Wyoming</option>
                             </select>
                             @error('state')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="text-danger mt-1">{{$message}}</p>
                             @enderror 
                         </div>
 
@@ -166,7 +166,7 @@
                             <label for="postal_code" class="form-label">ZIP Code</label>
                             <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder = "ZIP Code" value="{{$client->postal_code}}">
                             @error('phone_number')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror    
                         </div>
                         </div>
@@ -182,7 +182,7 @@
                                     @endforeach
                                 </select>
                                 @error('category_id')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
     
@@ -194,7 +194,7 @@
                                     @endforeach
                                 </select>
                                 @error('case_type_id')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
     
@@ -206,7 +206,7 @@
                                     @endforeach
                                 </select>
                                 @error('referral_source_id')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="text-danger mt-1">{{$message}}</p>
                                 @enderror 
                             </div>
                         </div>
@@ -223,11 +223,11 @@
                 </div>
             </div>
 
-            @unless(count($contacts) == 0)
             
             <div class="card mb-3">
                 <div class="card-body p-4">
                     <h2 class="card-title">Contact History</h2>
+                    @unless(count($contacts) == 0)
                     <h6 class="card-subtitle text-muted mb-4">(<a href="/clients/{{$client->id}}/contacts">See all</a>)</h6>
                     <div class="table-responsive">
                         <table class="table">
@@ -251,12 +251,12 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    @else
+                    <p>No contacts recorded yet.</p>
+                    @endunless
+                    <a href="{{route('clients.contacts.create', $client->id)}}" class="btn btn-success">Record contact</a>
+                </div>  
             </div>
-            @else
-                <p>No contacts found</p>
-            @endunless
-            
         </div>
     </div>
 </div>    

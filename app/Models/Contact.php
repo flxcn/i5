@@ -12,6 +12,17 @@ class Contact extends Model
     protected $fillable = [
         'contact_type_id', 'contact_date', 'contact_summary'
     ];
+    
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'contact_date'
+    ];
 
     public function client()
     {

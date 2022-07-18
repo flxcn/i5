@@ -11,3 +11,6 @@ email & username
 
 
 ## Logout Page
+
+Invitation only sign-up:
+https://laraveldaily.com/laravel-auth-make-registration-invitation-only/

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', ' - ' . $client->first_name . ' ' . $client->last_name)
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -240,10 +242,10 @@
                             <tbody>
                                 @foreach($contacts as $contact)
                                     <tr>
-                                        <td>{{$contact->contact_date}}</td>
+                                        <td>{{$contact->contact_date->format('F j, Y')}}</td>
                                         <td>{{$contact->contact_type->description}}</td>
-                                        <td>{{Str::limit($contact->contact_summary, 300) }}</td>
-                                        <td>{{$client->updated_at}}</td>
+                                        <td>{{Str::limit($contact->contact_summary, 300) }} <a href="{{route('clients.contacts.show',['client'=>$client->id,'contact'=>$contact->id])}}"> (View) </a></td>
+                                        <td>{{$contact->updated_at->format('F j, Y, g:i a')}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>

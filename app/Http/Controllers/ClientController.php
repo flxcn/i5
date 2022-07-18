@@ -175,6 +175,12 @@ class ClientController extends Controller
                 ->where('phone_number', 'LIKE', "%{$query}%")
                 ->paginate();
         }
+        else if($search_mode == "urgent")
+        {
+            $clients = Client::query()
+                ->whereIn('case_type_id', array(100, 101, 102))
+                ->paginate();
+        }
         else if($search_mode == "author_id")
         {
             $clients = Client::query()

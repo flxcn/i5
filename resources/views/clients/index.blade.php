@@ -5,13 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            @if(session()->has('message'))
+            @if(session()->has('message') && session()->has('client_id'))
             <div class="card mb-3 bg-success">
                 <div class="card-body p-3">
-                <p class="card-text text-white">
-                    {{session('message')}}
-                    <a class="link-light" href="/clients/{{session('client_id')}}">Click here</a> to view.
-                </p>
+                    <p class="card-text text-white">
+                        {{session('message')}}
+                        <a class="link-light" href="/clients/{{session('client_id')}}">Click here</a> to view.
+                    </p>
+                </div>
+            </div>
+            @elseif(session()->has('delete') && session('delete'))
+            <div class="card mb-3 bg-danger">
+                <div class="card-body p-3">
+                    <p class="card-text text-white">
+                        {{session('message')}}
+                    </p>
                 </div>
             </div>
             @endif

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'i5') }} @yield('title')</title>
+    <title>@yield('title')</title>
 
     <link rel="icon" href="{{ asset('images/logo.png') }}" defer>
 

@@ -5,7 +5,7 @@
 </p>
 
 # i5
-A comprehensive redesign of the [i4 database](https://github.com/scasBot/i4) for the Small Claims Advisory Service.
+A comprehensive redesign of the [i4 database](https://github.com/scasBot/i4) for the Small Claims Advisory Service. The live version of this project can be accessed at [i5.masmallclaims.org](https://i5.masmallclaims.org)
 
 ## Installation
 
@@ -42,5 +42,26 @@ Upload the files to your document root, or if you are running your own server, u
 ```sh
 php artisan serve
 ```
+
+## Usage
+
+### For Volunteers
+
+#### Requesting User Invite
+
+#### Searching Clients
+
+#### Creating a Client
+
+#### Managing Contacts
+
+### For Administrators
+
+### Managing User Invites
+
+### Managing User Roles
+
+
+
 
 

@@ -90,8 +90,20 @@ class ContactController extends Controller
      */
     public function update($client_id, Request $request, Contact $contact)
     {
-        $contact->update($request->all());
-        return redirect()->route('clients.contacts.index', $client_id);
+        $contact = Contact::find($contact->id);
+        
+        $formFields = $request->validate([
+            'contact_date' => 'required',
+            'contact_summary' => 'nullable',
+            'contact_type_id' => 'required',
+        ]);
+
+        $contact->update($formFields);
+
+        return back()->with('message', 'Contact updated successfully!');
+
+        // $contact->update($request->all());
+        // return redirect()->route('contacts.index', $client_id);
     }
 
     /**
@@ -103,7 +115,7 @@ class ContactController extends Controller
     public function destroy($client_id, Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('contacts.index', $contact->id);
+        return redirect()->route('clients.contacts.index', ['client' => $client_id, 'contact' => $contact->id]);
     }
 
     public function search(Request $request)

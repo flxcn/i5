@@ -10,9 +10,9 @@ class Contact extends Model
     use HasFactory;
 
     protected $fillable = [
-        'contact_type_id', 'contact_date', 'contact_summary'
+        'contact_type_id', 'contact_date', 'contact_summary', 'client_id', 'author_id'
     ];
-    
+
     /**
      * The attributes that should be mutated to dates.
      *

@@ -26,23 +26,19 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Contact ID</th>
-                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Contact Date</th>
+                                    <th scope="col">Contact Type</th>
                                     <th scope="col">Summary</th>
-                                    <th scope="col">Created At</th>
                                     <th scope="col">Updated At</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($contacts as $contact)
                                     <tr>
-                                        <th scope="row">{{$contact->id}}</th>
-                                        <td>{{$contact->contact_type_id}}</td>
-                                        <td>{{$contact->contact_date}}</td>
-                                        <td>{{Str::limit($contact->contact_summary, 1000) }}</td>
-                                        <td>{{$contact->created_at}}</td>
-                                        <td>{{$client->updated_at}}</td>
+                                        <td>{{$contact->contact_date->format('F j, Y')}}</td>
+                                        <td>{{$contact->contact_type->description}}</td>
+                                        <td>{{Str::limit($contact->contact_summary, 1000) }} (<a href="{{route('clients.contacts.show',['client'=>$client->id,'contact'=>$contact->id])}}">Edit contact</a>)</td>
+                                        <td>{{$contact->updated_at->format('F j, Y, g:i a')}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>

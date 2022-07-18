@@ -6,7 +6,20 @@
         <div class="col-md-12">  
             <div class="card mb-3">
                 <div class="card-body p-4">
-                    <h2 class="card-title mb-4">Client Info</h2>
+
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-4">
+                        <h2 class="card-title">Client Info</h2>
+                        <div class="btn-toolbar pb-3">
+                            <div class="btn-group">
+                                <form method="post" action="{{route('clients.destroy',$client->id)}}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <form method="POST" action="/clients/{{$client->id}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -149,7 +162,7 @@
 
                         <div class="col-md-3 mb-3">
                             <label for="postal_code" class="form-label">ZIP Code</label>
-                            <input type="tel" class="form-control" id="postal_code" name="postal_code" placeholder = "ZIP Code" value="{{$client->postal_code}}">
+                            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder = "ZIP Code" value="{{$client->postal_code}}">
                             @error('phone_number')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                             @enderror    

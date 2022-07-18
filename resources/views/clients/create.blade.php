@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'i5') . ' | Create Client')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -11,14 +13,12 @@
                     <form method="POST" action="/clients" enctype="multipart/form-data">
                         @csrf
 
-                        {{-- <input class="form-control" type="text" value="Client ID" aria-label="Client ID" readonly> --}}
-
                         <div class="mb-3">
                             <label for="first_name" class="form-label">First name</label>
                             <input type="text" class="form-control" id="first_name" name="first_name" value="{{old('first_name')}}">
 
                             @error('first_name')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
 
@@ -27,7 +27,7 @@
                             <input type="text" class="form-control" id="last_name" name="last_name" value="{{old('last_name')}}">
 
                             @error('last_name')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
 
@@ -36,7 +36,7 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
 
                             @error('email')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
 
@@ -45,7 +45,7 @@
                             <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder = "###-###-####" value="{{old('phone_number')}}">
 
                             @error('phone_number')
-                            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            <p class="text-danger mt-1">{{$message}}</p>
                             @enderror
                         </div>
                   

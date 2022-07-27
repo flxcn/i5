@@ -6,32 +6,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\CaseType;
 
-// 99 Case complete 1
-// 20 Case Pending 1
-// 51 Case referred (external) 0
-// 52 Case referred (Legal Research) 0
-// 1 Urgent 1
-// 21 Never been contacted 0
-// 9 Legal Research reply received 0
-// 90 Cannot contact 0
-// 60 Client assisted, likely to call again 1
-// 98 Client assisted, not likely to call again 1
-// 11 Phone tag 0
-// 22 1 message left 0
-// 23 2 messages left 0
-// 24 3+ messages left 0
-// 15 Needs to be contacted 1
-// 61 Client assisted 0
-// 97 Assistance not required 0
-// 10 Upcoming Appointment 0
-// 25 Voicemail, Helped 0
-// 12 Email Tag 0
-// 0 Undefined 0
-// 96 Timed Out 0
-// 100 Urgent, foreign language 0
-// 101 Urgent, time sensitive 0
-// 102 Urgent, upcoming court date 0
-
 class CaseTypeSeeder extends Seeder
 {
     /**
@@ -166,6 +140,11 @@ class CaseTypeSeeder extends Seeder
                 'id' => 102,
                 'description' => 'Urgent, upcoming court date',
                 'is_active' => true
+            ],
+            [
+                'id' => 103,
+                'description' => 'Client assisted and surveyed',
+                'is_active' => false
             ],
         ];
 

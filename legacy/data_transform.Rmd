@@ -1,0 +1,126 @@
+---
+title: "Legacy Data Transformation"
+author: "Felix Chen"
+date: "7/26/2022"
+output: html_document
+---
+
+# Legacy Data Transformation
+Migration from i3 + i4 to i5
+
+
+Import libraries
+```{r}
+library(plyr)
+library(tidyverse)
+```
+
+## Users Table
+```{r}
+old_users = read_csv("data/masmallc_scas_table_i3_Users.csv", na = c("", "NA", "NULL"))
+
+head(old_users)
+# summary(old_users)
+
+# initialize empty dataframe
+new_users <- data.frame(matrix(ncol = 0, nrow = nrow(old_users)))
+
+# copy over values from old format
+new_users$id <- old_users$UserID
+new_users$name <- old_users$UserName
+new_users$grad_year <- old_users$YOG
+new_users$email <- old_users$Email
+new_users$email_verified_at <- NA
+new_users$password <- NA
+new_users$remember_token <- NA
+new_users$created_at <- new_users$updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+
+# write to output file
+write_csv(new_users,"output/users.csv", na = "NULL", col_names = FALSE)
+```
+
+## Contacts Table
+```{r}
+old_contacts = read_csv("data/masmallc_scas_table_dbi4_Contacts.csv", na = c("", "NA", "NULL"))
+head(old_contacts)
+# summary(old_contacts)
+
+# initialize empty dataframe
+new_contacts <- data.frame(matrix(ncol = 0, nrow = nrow(old_contacts)))
+
+# copy over values from old format
+new_contacts$id <- old_contacts$ContactID
+new_contacts$client_id <- old_contacts$ClientID
+new_contacts$author_id <- old_contacts$UserAddedID
+new_contacts$contact_type_id <- old_contacts$ContactTypeID
+new_contacts$contact_date <- old_contacts$ContactDate
+new_contacts$contact_summary <- old_contacts$ContactSummary
+new_contacts$created_at <- old_contacts$ContactDate
+new_contacts$updated_at <- old_contacts$ContactEditDate
+
+# write to output file
+write_csv(new_contacts,"output/contacts.csv", na = "", col_names = FALSE)
+```
+
+## Categories Table
+```{r}
+categories = read_csv("category_translations.csv")
+
+new_category_ids <- categories$new_category_id
+old_category_ids <- categories$old_category_id
+```
+
+## Referral Sources Table
+```{r}
+referral_sources = read_csv("referral_source_translations.csv", na = c("", "NA", "NULL"))
+
+new_referral_source_ids <- referral_sources$new_referral_source_id
+old_referral_source_ids <- referral_sources$old_referral_source_id
+```
+
+
+## Clients Table
+```{r}
+old_clients = read_csv("data/masmallc_scas_table_db_Clients.csv", na = c("", "NA", "NULL", "0000-00-00"))
+
+head(old_clients)
+# summary(old_clients)
+
+# initialize empty dataframe
+new_clients <- data.frame(matrix(ncol = 0, nrow = nrow(old_clients)))
+
+# copy over values from old format
+new_clients$id <- old_clients$ClientID
+new_clients$last_name <- old_clients$LastName
+new_clients$first_name <- old_clients$FirstName
+new_clients$phone_number <- paste0(old_clients$Phone1AreaCode,'-',old_clients$Phone1Number)
+new_clients$email <- old_clients$Email
+new_clients$language <- old_clients$Language
+new_clients$address_line_1 <- old_clients$Address1
+new_clients$address_line_2 <- old_clients$Address2
+new_clients$city <- old_clients$City
+new_clients$state <- old_clients$State
+new_clients$postal_code <- old_clients$ZIP
+new_clients$country <- old_clients$Country
+
+new_clients$case_type_id <- old_clients$CaseTypeID
+new_clients$case_type_id <- ifelse(new_clients$case_type_id == "1", "2", new_clients$case_type_id)
+new_clients$case_type_id <- ifelse(new_clients$case_type_id == "0", "1", new_clients$case_type_id)
+
+new_clients$category_id <- NA
+new_clients$category_id <- mapvalues(old_clients$CategoryID, 
+          from=old_category_ids, 
+          to=new_category_ids)
+
+new_clients$referral_source_id <- NA
+new_clients$referral_source_id <- mapvalues(old_clients$ReferralSource, 
+          from=old_referral_source_ids, 
+          to=new_referral_source_ids)
+
+new_clients$comments <- old_clients$Notes # this needs to be added
+new_clients$created_at <- old_clients$LastEditTime
+new_clients$updated_at <- old_clients$LastEditTime
+
+# write to output file
+write_csv(new_clients,"output/clients.csv", na = "NULL", col_names = FALSE)
+```

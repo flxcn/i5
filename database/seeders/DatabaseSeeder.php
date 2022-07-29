@@ -18,13 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
 
         $this->call([
             CaseTypeSeeder::class,
             CategorySeeder::class,
             ContactTypeSeeder::class,
-            ReferralSourceSeeder::class
+            ReferralSourceSeeder::class,
+            PermissionSeeder::class,
+            // RoleSeeder::class
         ]);
 
         Client::factory(50)->has(Contact::factory()->count(3))->create();

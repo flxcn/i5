@@ -11,6 +11,8 @@
 
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-4">
                         <h2 class="card-title">Client Info</h2>
+
+                        @can('delete clients')
                         <div class="btn-toolbar pb-3">
                             <div class="btn-group">
                                 <form method="post" action="{{route('clients.destroy',$client->id)}}">
@@ -20,6 +22,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endcan
                     </div>
 
                     <form method="POST" action="/clients/{{$client->id}}" enctype="multipart/form-data">

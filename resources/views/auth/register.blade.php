@@ -75,6 +75,18 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">Select Role</label>
+
+                            <div class="col-md-6">
+                                <select id="role" name="role" class="form-select @error('role') is-invalid @enderror" aria-label="Role select" required>
+                                    <option value="comper">Comper</option>
+                                    <option value="volunteer">Volunteer</option>
+                                    <option value="director">Director</option>
+                                </select>                            
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

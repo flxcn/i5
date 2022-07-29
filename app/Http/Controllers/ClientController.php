@@ -50,7 +50,6 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-
         $formFields = $request->validate([
             'first_name' => 'nullable',
             'last_name' => 'nullable',

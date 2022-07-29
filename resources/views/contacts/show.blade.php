@@ -13,6 +13,8 @@
 
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-4">
                         <h2 class="card-title">Contact with {{$contact->client->first_name . " " . $contact->client->last_name}} <span class="text-secondary text-sm">#{{$contact->id}}</span></h2>
+
+                        @can('delete contacts')
                         <div class="btn-toolbar pb-3">
                             <div class="btn-group">
                                 <form method="post" action="{{route('clients.contacts.destroy', ['client' => $contact->client->id, 'contact' => $contact->id])}}">
@@ -22,6 +24,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endcan
                     </div>
 
                     <form method="POST" action="{{route('clients.contacts.update', ['client' => $contact->client->id, 'contact' => $contact->id])}}" enctype="multipart/form-data">

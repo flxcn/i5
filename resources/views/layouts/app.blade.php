@@ -47,7 +47,15 @@
                                   <li><a class="dropdown-item" href="{{ __('messages.office_guide_url')}}" target="_blank">Office Guide</a></li>
                                   <li><a class="dropdown-item" href="{{ __('messages.signout_sheet_url')}}" target="_blank">Sign-Out Sheet</a></li>
                                 </ul>
-                              </li>
+                            </li>
+
+                            @can('manage users')
+                            <li class="nav-item ms-3">
+                                <a class="nav-link" href="/users">
+                                  Manage Users
+                                </a>
+                            </li>
+                            @endcan
                         @endauth
                     </ul>
 
@@ -58,12 +66,6 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

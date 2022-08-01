@@ -2,8 +2,6 @@
 
 @section('title', config('app.name', 'i5') . ' | View Contact')
 
-@section('title', ' - ' .)
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

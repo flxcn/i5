@@ -31,7 +31,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/search', [ClientController::class, 'search']);
+Route::get('/clients/search', [ClientController::class, 'search']);
 
 Route::resources([
     'users' => UserController::class,

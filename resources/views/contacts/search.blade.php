@@ -43,7 +43,7 @@
             
             </div>
             @else
-                <p>No clients found matching your search. <a href="/clients/create">Click here</a> to add a new client.</p>
+                <p>No contacts found matching your search. <a href="/clients/create">Click here</a> to add a new client.</p>
             @endunless
         </div>
     </div>

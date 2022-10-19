@@ -17,7 +17,7 @@ library(tidyverse)
 
 ## Users Table
 ```{r}
-old_users = read_csv("data/masmallc_scas_table_i3_Users.csv", na = c("", "NA", "NULL"))
+old_users = read_csv("users.csv", na = c("", "NA", "NULL"))
 
 head(old_users)
 # summary(old_users)
@@ -41,7 +41,7 @@ write_csv(new_users,"output/users.csv", na = "NULL", col_names = FALSE)
 
 ## Contacts Table
 ```{r}
-old_contacts = read_csv("data/masmallc_scas_table_dbi4_Contacts.csv", na = c("", "NA", "NULL"))
+old_contacts = read_csv("contacts.csv", na = c("", "NA", "NULL"))
 head(old_contacts)
 # summary(old_contacts)
 
@@ -57,6 +57,11 @@ new_contacts$contact_date <- old_contacts$ContactDate
 new_contacts$contact_summary <- old_contacts$ContactSummary
 new_contacts$created_at <- old_contacts$ContactDate
 new_contacts$updated_at <- old_contacts$ContactEditDate
+
+client_author_translations <- data.frame(matrix(ncol = 0, nrow = nrow(old_contacts)))
+client_author_translations$client_id <- old_contacts$ClientID
+client_author_translations$author_id <- old_contacts$UserAddedID
+write_csv(client_author_translations,"client_author_translations.csv", na = "", col_names = TRUE)
 
 # write to output file
 write_csv(new_contacts,"output/contacts.csv", na = "", col_names = FALSE)
@@ -81,7 +86,7 @@ old_referral_source_ids <- referral_sources$old_referral_source_id
 
 ## Clients Table
 ```{r}
-old_clients = read_csv("data/masmallc_scas_table_db_Clients.csv", na = c("", "NA", "NULL", "0000-00-00"))
+old_clients = read_csv("clients.csv", na = c("", "NA", "NULL", "0000-00-00"))
 
 head(old_clients)
 # summary(old_clients)
@@ -116,10 +121,17 @@ new_clients$referral_source_id <- NA
 new_clients$referral_source_id <- mapvalues(old_clients$ReferralSource, 
           from=old_referral_source_ids, 
           to=new_referral_source_ids)
+new_clients$referral_source_id <- ifelse(is.na(new_clients$referral_source_id), "1", new_clients$referral_source_id)
+
+new_clients$author_id <- NA
+new_clients$author_id <- mapvalues(new_clients$id, 
+          from=client_author_translations$client_id, 
+          to=client_author_translations$author_id)
 
 new_clients$comments <- old_clients$Notes # this needs to be added
 new_clients$created_at <- old_clients$LastEditTime
 new_clients$updated_at <- old_clients$LastEditTime
+
 
 # write to output file
 write_csv(new_clients,"output/clients.csv", na = "NULL", col_names = FALSE)

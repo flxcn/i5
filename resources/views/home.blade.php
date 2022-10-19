@@ -17,8 +17,8 @@
                                 <b>Class of {{$user->grad_year}}</b><br>
                                 <i>i5 user since {{$user->created_at->format('Y')}}</i>
                             </p>
-                            <a href="#" class="card-link">Edit profile</a>
-                            <a href="#" class="card-link">Change password</a>
+                            {{-- <a href="{{route('users.edit',$user->id)}}" class="card-link">Edit profile</a> --}}
+                            {{-- <a href="#" class="card-link">Change password</a> --}}
                         </div>
                     </div>
 
@@ -26,7 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title mb-1">My Contributions</h5>
                             <ul class="list-group mt-0 list-group-flush text-left">
-                                <li class="list-group-item px-0">Clients entered: <b>{{$user->clients->count();}}</b> (<a href="/search?q={{$user->id}}&mode=author_id">See all</a>)</li>
+                                <li class="list-group-item px-0">Clients entered: <b>{{$user->clients->count();}}</b> (<a href="/clients/search?q={{$user->id}}&mode=author_id">See all</a>)</li>
                                 <li class="list-group-item px-0">Contacts recorded: <b>{{$user->contacts->count();}}</b> (<a href="/contacts?q={{$user->id}}&mode=author_id">See all</a>)</li>
                             </ul>
                         </div>

@@ -1,5 +1,5 @@
 <div class="d-flex ms-5">  
-    <form action="/search" method="get">  
+    <form action="/clients/search" method="get">  
         <div class="input-group ms-1">
             <a href="/clients/create" class="btn btn-outline-success rounded">Add&nbsp;Client</a>
 

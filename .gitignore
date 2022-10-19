@@ -17,4 +17,6 @@ yarn-error.log
 /.vscode
 public/mix-manifest.json
 legacy/data/
-legacy/output/clients.csv
+legacy/output/
+legacy/clients.csv
+legacy/contacts.csv

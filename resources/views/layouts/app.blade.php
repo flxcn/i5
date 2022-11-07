@@ -43,9 +43,9 @@
                                   Resources
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <li><a class="dropdown-item" href="{{ __('messages.wiki_url')}}" target="_blank">SCAS Wiki</a></li>
-                                  <li><a class="dropdown-item" href="{{ __('messages.office_guide_url')}}" target="_blank">Office Guide</a></li>
-                                  <li><a class="dropdown-item" href="{{ __('messages.signout_sheet_url')}}" target="_blank">Sign-Out Sheet</a></li>
+                                    <li><a class="dropdown-item" href="{{ __('messages.i5_guide_url')}}" target="_blank">User Guide</a></li>
+                                    <li><a class="dropdown-item" href="{{ __('messages.wiki_url')}}" target="_blank">SCAS Wiki</a></li>
+                                    <li><a class="dropdown-item" href="{{ __('messages.office_guide_url')}}" target="_blank">Office Guide</a></li>
                                 </ul>
                             </li>
 

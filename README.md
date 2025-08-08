@@ -72,23 +72,13 @@ Located in `lang/en/messages.php` is a list of defined terms that may change fro
 
 ## Usage
 
-### For Volunteers
-
-#### Requesting an Invite
-
-#### Searching Clients
-
-#### Creating a Client
-
-#### Managing Contacts
-
-### For Administrators
-
-#### Managing User Invites
-
-#### Managing User Roles
+Please consult the user guide [linked here](https://github.com/flxcn/i5/blob/main/i5_user_guide.pdf), which walks through how to use the platform for volunteers (using dummy data).
 
 ## About the Project
+
+The i5 facilitates the volunteer work of the Massachusetts Small Claims Advisory Service, the only organization in Massachusetts that focuses primarily on helping individuals navigate the small claims court system in the Commonwealth. Our mission is to empower socioeconomically disadvantaged people in order for them to seek legal redress effectively through the small claims system, and to protect their rights as consumers, tenants, and members of our community. Often, these individuals are unaware of their options without our help. We provide citizens with information on Massachusetts law, small claims procedure, and effective court presentations.
+
+
 
 
 

@@ -5,7 +5,7 @@
 </p>
 
 # i5
-A comprehensive redesign of the [i4 database](https://github.com/scasBot/i4) for the Small Claims Advisory Service. The live version of this project can be accessed at [i5.masmallclaims.org](https://i5.masmallclaims.org)
+A comprehensive redesign of the [i4 database](https://github.com/scasBot/i4) for the Small Claims Advisory Service.
 
 ## Installation
 
